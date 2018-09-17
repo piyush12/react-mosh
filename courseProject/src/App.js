@@ -18,7 +18,6 @@ class App extends Component {
 
   // hadle delete
   handleDelete = counterId => {
-    console.log(counterId)
     const newCounters = this.state.counters.filter(
       counter => counter.id !== counterId
     );
@@ -49,13 +48,13 @@ class App extends Component {
   };
 
   render() {
-    return ( 
+    return (
     <React.Fragment>
-      <Navbar />
+      <Navbar counter={this.state.counters.filter(c => c.value > 0).length} />
         <main className="container">
           <Counters 
             counters={this.state.counters}
-            onDelete={() => this.handleDelete()}
+            onDelete={this.handleDelete}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
           />
