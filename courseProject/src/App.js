@@ -1,12 +1,9 @@
-import React, {
-  Component
-} from 'react';
-import Counters from './components/counters';
-import Navbar from './components/navbar';
-import './App.css';
+import React, { Component } from "react";
+import Counters from "./components/counters";
+import Navbar from "./components/navbar";
+import "./App.css";
 
 class App extends Component {
-
   state = {
     counters: [
       { id: 1, value: 4 },
@@ -47,22 +44,32 @@ class App extends Component {
     });
   };
 
+  // handle decrement
+  handleDecrement = counter => {
+    const countersClone = [...this.state.counters];
+    const index = countersClone.indexOf(counter);
+    countersClone[index].value--;
+    this.setState({
+      counters: countersClone
+    });
+  };
+
   render() {
     return (
-    <React.Fragment>
-      <Navbar counter={this.state.counters.filter(c => c.value > 0).length} />
+      <React.Fragment>
+        <Navbar counter={this.state.counters.filter(c => c.value > 0).length} />
         <main className="container">
-          <Counters 
+          <Counters
             counters={this.state.counters}
             onDelete={this.handleDelete}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
           />
         </main>
       </React.Fragment>
     );
   }
-
 }
 
 export default App;

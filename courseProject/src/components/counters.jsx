@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
-  
   render() {
-    const {counters, onDelete, onIncrement} = this.props;
+    const { counters, onDelete, onIncrement, onDecrement } = this.props;
     return (
       <div>
         <button
@@ -19,6 +18,7 @@ class Counters extends Component {
             value={counter.value}
             onDelete={onDelete}
             onIncrement={onIncrement}
+            onDecrement={onDecrement}
             counters={counter}
           />
         ))}
