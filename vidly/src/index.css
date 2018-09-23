@@ -3,6 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-.list-group-item{
+.list-group-item {
   cursor: pointer;
+}
+nav.navbar {
+  margin-bottom: 15px;
 }

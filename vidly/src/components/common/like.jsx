@@ -1,16 +1,11 @@
 import React from "react";
 
-const Like = (props) => {
-  const { like } = props;
+const Like = ({ like, onLike }) => {
   let classes = "fa fa-heart";
   if (!like) classes += "-o";
   return (
-      <i
-        className={classes}
-        style={{ cursor: "pointer" }}
-        onClick={props.onLike}
-      />
-    );
-}
- 
+    <i className={classes} style={{ cursor: "pointer" }} onClick={onLike} />
+  );
+};
+
 export default Like;
