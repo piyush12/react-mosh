@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 
 class Form extends Component {
-    state = {  }
+    state = {
+        data : {},
+        errors : {}
+    }
     render() { 
-        return (  );
+        return (
+            <h1>Form</h1>
+        );
     }
 }
  

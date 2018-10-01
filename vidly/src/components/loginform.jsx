@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Input from './common/input';
+import Form from '../components/common/form';
 
 class Loginform extends Component {
   state = {
-    account : { username:'', password:'' },
+    data : { username:'', password:'' },
     errors : {}
   };
   validate = () => {
     const errors = {};
-    const { account } = this.state;
-    if(account.username.trim() === '')
+    const { data } = this.state;
+    if(data.username.trim() === '')
       errors.username = 'Username is required';
-    if(account.password.trim() === '')
+    if(data.password.trim() === '')
       errors.password = 'Password is required';
     return (Object.keys(errors).length > 0) ? errors : null
   }
@@ -27,21 +28,21 @@ class Loginform extends Component {
   };
 
   handleChange = (e) => {
-    const account = {...this.state.account};
-    account[e.currentTarget.name] = e.currentTarget.value;
+    const data = {...this.state.data};
+    data[e.currentTarget.name] = e.currentTarget.value;
     this.setState({
-      account
+      data
     })
   }
 
   render() {
-    const { account, errors } = this.state;
+    const { data, errors } = this.state;
     return (
       <div>
         <h1>Login Form</h1>
         <form onSubmit={this.handleSubmit}>
-          <Input label='Username' onChange={this.handleChange} value={account.username} type='text' name='username' errors={errors.username}/>
-          <Input label='Password' onChange={this.handleChange} value={account.password} type='password' name='password' errors={errors.password}/>
+          <Input label='Username' onChange={this.handleChange} value={data.username} type='text' name='username' errors={errors.username}/>
+          <Input label='Password' onChange={this.handleChange} value={data.password} type='password' name='password' errors={errors.password}/>
           <button type="submit" className="btn btn-primary" disabled={this.validate()}>
             Submit
           </button>
