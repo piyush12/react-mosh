@@ -4,22 +4,20 @@ const ListGroup = ({
   items,
   textProperty,
   valueProperty,
-  onItemSelect,
-  selectedItem
+  selectedItem,
+  onItemSelect
 }) => {
   return (
     <ul className="list-group">
-      {items.map(genre => (
+      {items.map(item => (
         <li
+          onClick={() => onItemSelect(item)}
+          key={item[valueProperty]}
           className={
-            genre === selectedItem
-              ? "list-group-item active"
-              : "list-group-item"
+            item === selectedItem ? "list-group-item active" : "list-group-item"
           }
-          key={genre[valueProperty]}
-          onClick={() => onItemSelect(genre)}
         >
-          {genre[textProperty]}
+          {item[textProperty]}
         </li>
       ))}
     </ul>
@@ -27,7 +25,8 @@ const ListGroup = ({
 };
 
 ListGroup.defaultProps = {
-  valueProperty: "_id",
-  textProperty: "name"
+  textProperty: "name",
+  valueProperty: "_id"
 };
+
 export default ListGroup;
